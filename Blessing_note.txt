@@ -1,0 +1,61 @@
+#####################################
+#####################################
+	The github repo is
+#####################################
+#####################################
+
+Start symfony with 
+symfony server:start
+
+In .env, ensure you set your database details
+DATABASE_URL="mysql://root:password@127.0.0.1:3306/dataBaseName"
+
+
+Run the below codes on command line to setup the database
+
+php bin/console doctrine:database:create                  
+php bin/console make:migration            
+php bin/console doctrine:migrations:migrate        
+
+
+Console application
+
+call this application on the console using the line below:
+php bin/console app:uk-post-codes  
+
+When prompted, enter y as yes if you wish to go on
+
+The application is validated to accept post codes between 3 to 7 alphanumeric characters          
+The Postcode data is fetched from the url: 'https://mapit.mysociety.org/postcode/UB83NA' (example)
+The fetched data is also saved to the database
+
+****My understanding of the task is that different postcodes would be repeated to populate the database
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+Controller action to return postcodes with partial string matches as a JSON API response
+////////////////////////////////////////////////////////////////////////////////////////
+PostcodeController::showPostCodeData
+
+Kindly visit the urls below (as example), 
+http://127.0.0.1:8000/searchdata/ub8
+http://127.0.0.1:8000/searchdata/ub83
+http://127.0.0.1:8000/searchdata/ub83NA
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+Controller action to return postcodes with within latitude and longitude as a JSON API response
+///////////////////////////////////////////////////////////////////////////////////////////////
+PostcodeController::showLatLongPostCode()
+
+http://127.0.0.1:8000/latlong/latitude/longitude
+http://127.0.0.1:8000/latlong/52.52038/-0.268775
+
+
+
+
+
+
